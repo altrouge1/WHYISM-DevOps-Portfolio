@@ -1,0 +1,8 @@
+# 1. Systemd 설정 새로고침 (파일 만들었으니 인식시켜야 함)
+sudo systemctl daemon-reload
+
+# 2. 타이머 활성화 및 즉시 시작 (부팅 시 자동 실행 등록)
+sudo systemctl enable --now jsn.timer
+
+# 3. 잘 등록됐는지 확인 (Next 실행 시간 확인)
+systemctl list-timers --all | grep jsn

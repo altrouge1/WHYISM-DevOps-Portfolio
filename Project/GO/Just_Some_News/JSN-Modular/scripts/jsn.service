@@ -1,0 +1,26 @@
+#/etc/systemd/system/rnfu.service
+
+[Unit]
+Description=Read News Fuck up! Automation Service
+# [핵심] 네트워크와 MariaDB가 완전히 부팅된 후에 실행하도록 보장
+After=network.target mariadb.service
+
+[Service]
+Type=oneshot
+User=rl
+Group=rl
+# 작업 디렉토리 지정 (logs 폴더 생성 위치 기준이 됨)
+WorkingDirectory=/home/rl/read_news
+# 파이썬 실행 경로 및 스크립트 지정
+ExecStart=/home/rl/Project/GO/Just_Some_News/JSN-Modular/jsn-app
+
+# 실행 실패시 즉시 재실행
+Restart=on-failure
+User=rl
+
+# 표준 출력을 저널로 보냄
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

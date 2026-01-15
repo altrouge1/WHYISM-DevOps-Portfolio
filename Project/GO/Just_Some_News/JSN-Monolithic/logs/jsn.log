@@ -1,0 +1,6 @@
+2026/01/15 17:05:12 jsn-monolithic.go:119: >>> 뉴스 수집 시작...
+2026/01/15 17:05:12 jsn-monolithic.go:137: XML 파싱 실패: xml: encoding "euc-kr" declared but Decoder.CharsetReader is nil
+2026/01/15 17:09:18 jsn-monolithic.go:119: >>> 뉴스 수집 시작...
+2026/01/15 17:09:18 jsn-monolithic.go:176: >>> 신규 수집:  지재처, ‘2026 WIPO 글로벌 어워즈’ 접수 시작 
+2026/01/15 17:09:18 jsn-monolithic.go:176: >>> 신규 수집:  ‘AI특허 심사실무 가이드’ 나왔다...지재처, 개정·배포 
+2026/01/15 17:09:19 jsn-monolithic.go:180: >>> 수집 완료: 신규 2건 / 전체 10건 스캔

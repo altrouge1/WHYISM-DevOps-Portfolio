@@ -1,0 +1,70 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        // ==========================================
+        // 1. [순서 변경] Python을 맨 위로 올림 (기본값 유도)
+        // ==========================================
+        {
+            "name": "Python: 현재 파일 실행 (Py 3.14)",
+            "type": "debugpy", // 최신 표준 디버거
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            // 알려주신 3.14 경로 강제 지정
+            "python": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3"
+        },
+        // ==========================================
+        // 2. [기존] C/C++ (macOS clang)
+        // ==========================================
+        {
+            "name": "C/C++ Run (macOS clang)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "preLaunchTask": "C/C++: clang build active file (macOS)"
+        },
+        // ==========================================
+        // 3. [기존] ASM (macOS NASM)
+        // ==========================================
+        {
+            "name": "Run ASM program (macOS)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "cwd": "${fileDirname}",
+            "externalConsole": true,
+            "MIMode": "lldb",
+            "preLaunchTask": "build asm (macOS)"
+        },
+        // ==========================================
+        // 4. [신규 추가] Go 실행 구성
+        // ==========================================
+        {
+            "name": "Go: 현재 파일 실행",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${fileDirname}",
+            "cwd": "${fileDirname}",
+            "console": "integratedTerminal"
+        },
+        // ==========================================
+        // 5. Elixir 실행 구성
+        // ==========================================
+        {
+            "name": "Elixir: 현재 파일 실행",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "/usr/local/bin/elixir",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        }
+    ]
+}

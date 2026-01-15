@@ -1,0 +1,15 @@
+#/etc/systemd/system/rnfu.timer
+
+[Unit]
+Description=Run Read News Fuck up! Every Hour
+
+[Timer]
+# 매 시 정각 (00분 00초)에 실행 (Cron의 '0 * * * *'와 동일)
+OnCalendar=*-*-* *:00:00
+# 시스템이 꺼져 있어서 놓친 실행을 부팅 직후에 수행할지 여부 (True 권장)
+Persistent=true
+# 연결된 서비스 지정
+Unit=rnfu.service
+
+[Install]
+WantedBy=timers.target

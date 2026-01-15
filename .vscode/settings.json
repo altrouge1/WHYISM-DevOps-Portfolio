@@ -1,0 +1,98 @@
+{
+    // ==========================================
+    // 💡 [업데이트] Code Runner: Elixir 경로 시스템 PATH로 변경
+    // ==========================================
+    "code-runner.executorMap": {
+        "c": "cd $dir && /usr/local/opt/llvm/bin/clang '$fileName' -g -O0 -o '$fileNameWithoutExt' && ./'$fileNameWithoutExt'",
+        "cpp": "cd $dir && /usr/local/opt/llvm/bin/clang++ '$fileName' -g -O0 -o '$fileNameWithoutExt' && ./'$fileNameWithoutExt'",
+        "asm": "cd $dir && nasm -f macho64 '$fileName' -o '$fileNameWithoutExt.o' && /usr/bin/ld -macosx_version_min 10.7.0 -lSystem -o '$fileNameWithoutExt' '$fileNameWithoutExt.o' && ./'$fileNameWithoutExt'",
+        "python": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3 -u",
+        "go": "cd $dir && /usr/local/go/bin/go run '$fileName'",
+        // Homebrew 설치 시 시스템 PATH의 elixir를 바로 사용합니다.
+        "elixir": "cd $dir && elixir '$fileName'"
+    },
+    "code-runner.executorMapByFileExtension": {
+        ".c": "cd $dir && /usr/local/opt/llvm/bin/clang '$fileName' -g -O0 -o '$fileNameWithoutExt' && ./'$fileNameWithoutExt'",
+        ".cpp": "cd $dir && /usr/local/opt/llvm/bin/clang++ '$fileName' -g -O0 -o '$fileNameWithoutExt' && ./'$fileNameWithoutExt'",
+        ".asm": "cd $dir && nasm -f macho64 '$fileName' -o '$fileNameWithoutExt.o' && /usr/bin/ld -macosx_version_min 10.7.0 -lSystem -o '$fileNameWithoutExt' '$fileNameWithoutExt.o' && ./'$fileNameWithoutExt'",
+        ".py": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3 -u '$fileName'",
+        ".go": "cd $dir && /usr/local/go/bin/go run '$fileName'",
+        ".ex": "cd $dir && elixir '$fileName'",
+        ".exs": "cd $dir && elixir '$fileName'"
+    },
+    "code-runner.runInTerminal": true,
+    "code-runner.clearPreviousOutput": true,
+    "code-runner.saveFileBeforeRun": true,
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "files.associations": {
+        "*.asm": "asm"
+    },
+    // ==========================================
+    // 🧩 [기존 유지] 에디터 및 자동완성
+    // ==========================================
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": true,
+        "strings": true
+    },
+    "editor.suggestOnTriggerCharacters": true,
+    "editor.inlineSuggest.enabled": true,
+    "editor.acceptSuggestionOnEnter": "on",
+    "editor.parameterHints.enabled": true,
+    "editor.hover.enabled": "on",
+    "editor.snippetSuggestions": "inline",
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "on",
+    "editor.autoClosingBrackets": "languageDefined",
+    "editor.autoClosingQuotes": "languageDefined",
+    "editor.autoIndent": "full",
+    "editor.formatOnType": true,
+    "editor.formatOnSave": true,
+    // ==========================================
+    // 🐍 [기존 유지] Python (macOS 15 / Py 3.14)
+    // ==========================================
+    "python.defaultInterpreterPath": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+    "python.analysis.typeCheckingMode": "off",
+    "python.terminal.activateEnvironment": true,
+    "python.analysis.extraPaths": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages",
+        "./site-packages"
+    ],
+    // ==========================================
+    // 💡 [기존 유지] C/C++ (C23 표준)
+    // ==========================================
+    "C_Cpp.default.cStandard": "c23",
+    "C_Cpp.default.cppStandard": "c++23",
+    "C_Cpp.default.compilerPath": "/usr/local/opt/llvm/bin/clang",
+    "C_Cpp.errorSquiggles": "disabled",
+    // ==========================================
+    // 💜 [업데이트] ElixirLS (Homebrew 경로 반영)
+    // ==========================================
+    "elixirLS.elixirPath": "/usr/local/bin/elixir",
+    "elixirLS.otpPath": "/usr/local/opt/erlang",
+    "elixirLS.trace.server": "verbose",
+    // ==========================================
+    // 🔵 [신규/수정] Go (중복 계층 오류 해결 및 최신 규격 반영)
+    // ==========================================
+    "go.alternateTools": {
+        "go": "/usr/local/go/bin/go"
+    },
+    "go.useLanguageServer": true,
+    "go.lintTool": "staticcheck",
+    "go.formatTool": "gofmt",
+    "go.docsTool": "godoc",
+    "go.toolsManagement.autoUpdate": true,
+    "go.diagnostic.vulncheck": "Imports", // Enum 오류 해결
+    "[go]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        },
+        "editor.tabSize": 4,
+        "editor.insertSpaces": false
+    },
+    "gopls": {
+        "ui.diagnostic.staticcheck": true,
+        "ui.vulncheck": "Imports"
+    }
+}

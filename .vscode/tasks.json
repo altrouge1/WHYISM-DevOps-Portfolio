@@ -1,0 +1,152 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: clang build active file (macOS)",
+            "command": "/usr/local/opt/llvm/bin/clang",
+            "args": [
+                "-std=c23",
+                "-fcolor-diagnostics",
+                "-fansi-escape-codes",
+                "-g",
+                "-O0",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}",
+                "-I/usr/local/opt/mariadb-connector-c/include/mariadb",
+                "-L/usr/local/opt/mariadb-connector-c/lib",
+                "-lmariadb"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "compiler: Homebrew clang 21.1.6"
+        },
+        {
+            "label": "build asm (NASM, macOS)",
+            "type": "shell",
+            "command": "nasm",
+            "args": [
+                "-f",
+                "macho64",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.o"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "detail": "assembler: nasm (Mach-O 64)"
+        },
+        {
+            "label": "link asm (Apple ld, macOS)",
+            "type": "shell",
+            "command": "/usr/bin/ld",
+            "args": [
+                "-macosx_version_min",
+                "10.7.0",
+                "-lSystem",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}",
+                "${fileDirname}/${fileBasenameNoExtension}.o"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [],
+            "group": "build",
+            "detail": "linker: Apple ld"
+        },
+        // ======================
+        // Go
+        // ======================
+        {
+            "label": "go run (current file)",
+            "type": "shell",
+            "command": "/usr/local/go/bin/go",
+            "args": [
+                "run",
+                "${file}"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "group": "build",
+            "detail": "Go: run current file"
+        },
+        {
+            "label": "go test (module)",
+            "type": "shell",
+            "command": "/usr/local/go/bin/go",
+            "args": [
+                "test",
+                "./..."
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build",
+            "detail": "Go: run all tests"
+        },
+        {
+            "label": "go build (release)",
+            "type": "shell",
+            "command": "/usr/local/go/bin/go",
+            "args": [
+                "build",
+                "-trimpath",
+                "-ldflags",
+                "-s -w",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}",
+                "${file}"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "group": "build",
+            "detail": "Go: release build"
+        },
+        // ======================
+        // Elixir
+        // ======================
+        {
+            "label": "elixir run (script)",
+            "type": "shell",
+            "command": "/usr/local/bin/elixir",
+            "args": [
+                "${file}"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "group": "build"
+        },
+        {
+            "label": "mix run (project)",
+            "type": "shell",
+            "command": "/usr/local/bin/mix", // 경로 통일
+            "args": [
+                "run"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build",
+            "detail": "Elixir: mix run"
+        }
+    ]
+}
