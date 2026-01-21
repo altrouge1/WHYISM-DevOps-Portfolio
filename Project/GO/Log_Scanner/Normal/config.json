@@ -1,0 +1,10 @@
+{
+    "target_log_path": "../../Project/GO/Just_Some_News/logs/jsn.log",
+    "keywords": [
+        "ERROR",
+        "FATAL",
+        "FAILURE",
+        "CRITICAL"
+    ],
+    "log_pattern": "\\[(.*?)\\]\\s+(\\d+)\\s+:\\s+(.*)"
+}
