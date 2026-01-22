@@ -1,5 +1,5 @@
 {
-    "target_log_path": "../../Just_Some_News/logs/jsn.log",
+    "target_log_path": "../Just_Some_News/logs/jsn.log",
     "keywords": [
         "ERROR",
         "FATAL",
